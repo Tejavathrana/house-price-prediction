@@ -7,7 +7,7 @@
 
 <body>
 
-<!-- 🌙 DARK MODE TOGGLE -->
+<!-- 🌙 DARK MODE -->
 <div class="toggle-container">
     <label class="switch">
         <input type="checkbox" onclick="toggleMode()">
@@ -20,11 +20,9 @@
     <h1>🏠 House Price Predictor</h1>
     <p class="subtitle">Predict house prices using AI & Machine Learning</p>
 
-    <!-- FORM -->
     <form action="/predict" method="post" onsubmit="showLoader()">
 
         <input type="number" name="area" placeholder="Area (sqft)" required>
-
         <input type="number" name="bedrooms" placeholder="Bedrooms" required>
 
         <select name="location">
@@ -42,27 +40,32 @@
 
     <!-- ERROR -->
     {% if result == "Please enter all fields" %}
+        <script>
+            document.getElementById("loader").style.display = "none";
+        </script>
         <p class="error">{{ result }}</p>
     {% endif %}
 
     <!-- RESULT -->
     {% if result and result != "Please enter all fields" %}
+        <script>
+            document.getElementById("loader").style.display = "none";
+        </script>
+
         <p class="result">Predicted Price: ₹{{ result }}</p>
         <p class="accuracy">Model Accuracy (R² Score): {{ accuracy }}</p>
 
         <div class="graph">
-            <img src="{{ url_for('static', filename='graph.png') }}">
+            <img src="{{ url_for('static', filename='graph.png') }}?v={{ result }}">
         </div>
     {% endif %}
 
-    <!-- FOOTER -->
     <div class="footer">
         Developed by Tejavath Rana Pratap 🚀
     </div>
 
 </div>
 
-<!-- SCRIPT -->
 <script>
 function showLoader() {
     document.getElementById("loader").style.display = "block";
