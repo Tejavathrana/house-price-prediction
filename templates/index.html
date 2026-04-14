@@ -2,9 +2,7 @@
 <html>
 <head>
     <title>House Price Prediction</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
     <style>
         body {
             font-family: Arial;
@@ -73,7 +71,13 @@
         <button type="submit">Predict</button>
     </form>
 
-    <p class="result">{{ prediction_text }}</p>
+    {% if result %}
+    {% if result|string == "Please enter all fields" %}
+        <p style="color:red; font-weight:bold;">{{ result }}</p>
+    {% else %}
+        <p class="result">Predicted Price: ₹{{ result }}</p>
+    {% endif %}
+{% endif %}
     <p class="accuracy">{{ accuracy }}</p>
 
     {% if graph %}
