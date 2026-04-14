@@ -22,8 +22,8 @@ def predict():
     # Graph
     plt.figure(figsize=(4,3))
     plt.bar(['Price'], [result[0]], color='#6fa8dc')
-    plt.title('Predicted House Price', fontsize=10)
-    plt.ylabel('Amount', fontsize=8)
+    plt.title('Predicted House Price')
+    plt.ylabel('Amount')
     plt.xlabel('Prediction')
     plt.tight_layout()
     plt.savefig('static/graph.png')
@@ -37,4 +37,4 @@ def predict():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True)
+  app.run(host="0.0.0.0", port=10000)
