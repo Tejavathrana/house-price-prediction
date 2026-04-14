@@ -25,6 +25,8 @@ def predict():
     area = int(request.form['area'])
     bedrooms = int(request.form['bedrooms'])
     location = int(request.form['location'])
+    if not area or not bedrooms:
+        return render_template('index.html', result="Please enter all fields")
 
     result = model.predict([[area, bedrooms, location]])
 
