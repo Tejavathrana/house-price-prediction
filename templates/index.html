@@ -55,9 +55,12 @@
 
 <body>
 
-<div class="container">
-    <h2>🏠 House Price Predictor</h2>
-
+<div class="container"></div>
+<h1>🏠 House Price Predictor</h1>
+<p style="color: gray; font-size: 13px;">
+    Predict house prices using AI & Machine Learning
+</p>
+    
     <form action="/predict" method="post">
         <input type="number" name="area" placeholder="Area (sqft)" required>
         <input type="number" name="bedrooms" placeholder="Bedrooms" required>
@@ -71,14 +74,14 @@
         <button type="submit">Predict</button>
     </form>
 
-    {% if result %}
-    {% if result|string == "Please enter all fields" %}
-        <p style="color:red; font-weight:bold;">{{ result }}</p>
-    {% endif %}
+    {% if result == "Please enter all fields" %}
+    <p class="error">{{ result }}</p>
 {% endif %}
-     {% if result and result|string != "Please enter all fields" %}
+{% if result and result != "Please enter all fields" %}
     <p class="result">Predicted Price: ₹{{ result }}</p>
+    <p class="accuracy">Model Accuracy (R² Score): {{ accuracy }}</p>
 {% endif %}
+
 
     {% if graph %}
         <div class="graph">
@@ -88,9 +91,8 @@
     <p style="font-size:12px; color:gray;">
     Predict house prices using Machine Learning
 </p>
-<p style="margin-top:20px; font-size:12px; color:gray;">
+<div class="footer">
     Developed by Tejavath Rana Pratap 🚀
-</p>
 </div>
 
 </body>
