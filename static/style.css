@@ -1,0 +1,50 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 350px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+input, select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #4a5bdc;
+}
+
+.result {
+    color: green;
+    font-weight: bold;
+}
+
+.accuracy {
+    color: blue;
+}
+
+.graph img {
+    width: 80%;
+    max-width: 300px;
+    margin-top: 20px;
+}

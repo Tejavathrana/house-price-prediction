@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .result {
+            color: green;
+            font-weight: bold;
+        }
+
+        .accuracy {
+            color: blue;
+        }
+
+        .graph img {
+            width: 80%;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🏠 House Price Predictor</h2>
+
+    <form action="/predict" method="post">
+        <input type="number" name="area" placeholder="Area (sqft)" required>
+        <input type="number" name="bedrooms" placeholder="Bedrooms" required>
+
+        <select name="location">
+            <option value="0">Urban</option>
+            <option value="1">Suburban</option>
+            <option value="2">Rural</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <p class="result">{{ prediction_text }}</p>
+    <p class="accuracy">{{ accuracy }}</p>
+
+    {% if graph %}
+        <div class="graph">
+            <img src="{{ graph }}">
+        </div>
+    {% endif %}
+    <p style="font-size:12px; color:gray;">
+    Predict house prices using Machine Learning
+</p>
+<p style="margin-top:20px; font-size:12px; color:gray;">
+    Developed by Tejavath Rana Pratap 🚀
+</p>
+</div>
+
+</body>
+</html>
