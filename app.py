@@ -1,3 +1,12 @@
+import os
+import pickle
+
+if not os.path.exists("model.pkl"):
+    import train_model
+
+model = pickle.load(open('model.pkl', 'rb'))
+accuracy = pickle.load(open('accuracy.pkl', 'rb'))
+
 from flask import Flask, render_template, request
 import pickle
 import matplotlib.pyplot as plt
