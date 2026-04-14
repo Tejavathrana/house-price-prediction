@@ -74,11 +74,11 @@
     {% if result %}
     {% if result|string == "Please enter all fields" %}
         <p style="color:red; font-weight:bold;">{{ result }}</p>
-    {% else %}
-        <p class="result">Predicted Price: ₹{{ result }}</p>
     {% endif %}
 {% endif %}
-    <p class="accuracy">{{ accuracy }}</p>
+     {% if result and result|string != "Please enter all fields" %}
+    <p class="result">Predicted Price: ₹{{ result }}</p>
+{% endif %}
 
     {% if graph %}
         <div class="graph">
